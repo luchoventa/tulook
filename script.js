@@ -1,4 +1,4 @@
-/* let nombre= prompt("ingrese su nombre");
+let nombre= prompt("ingrese su nombre");
 let fecha= prompt("hola "+ nombre + " ! estas buscando un atuendo para fin de a;o?")
 
 let descuentoFiestas= 100
@@ -28,18 +28,18 @@ function precioFinal(resultado){
 let ingreseCodigo=prompt("ingrese su codigo de descuento");
 
 if(ingreseCodigo=== "fiestas"||ingreseCodigo==="Fiestas"||ingreseCodigo==="FIESTAS"){
-/*    let precioFiestas= precioSuma(articulo1,articulo3o,articulo2);
+  /* let precioFiestas= precioSuma(articulo1,articulo3o,articulo2);
    let ivaFiestas= iva(precioFiestas);
-   let resultadoFinalFiestas=descuento(ivaFiestas,descuentoFiestas); */
-   /* precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoFiestas));
-} else if (ingreseCodigo=== "original"||ingreseCodigo==="Original"||ingreseCodigo==="ORIGINAL"){ */
-/*     let precioOriginal= precioSuma(articulo1,articulo2,articulo3);
+   let resultadoFinalFiestas=descuento(ivaFiestas,descuentoFiestas);  */
+ precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoFiestas));
+} else if (ingreseCodigo=== "original"||ingreseCodigo==="Original"||ingreseCodigo==="ORIGINAL"){
+/*    precioOriginal= precioSuma(articulo1,articulo2,articulo3);
     let ivaOriginal= iva(precioOriginal);
-    let resultadoFinalOriginal=descuento(ivaOriginal,descuentoOriginal); */
-/*     precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoOriginal));
+    let resultadoFinalOriginal=descuento(ivaOriginal,descuentoOriginal);  */
+   precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoOriginal));
 } else {
    precioFinal(iva(precioSuma(articulo1,articulo2,articulo3)));
-} */
+}
 class Producto{
     constructor(nombre,talle, precio){
         this.nombre = nombre.toLowerCase();
