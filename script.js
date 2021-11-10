@@ -1,4 +1,4 @@
-let nombre= prompt("ingrese su nombre");
+/* let nombre= prompt("ingrese su nombre");
 let fecha= prompt("hola "+ nombre + " ! estas buscando un atuendo para fin de a;o?")
 
 let descuentoFiestas= 100
@@ -31,15 +31,53 @@ if(ingreseCodigo=== "fiestas"||ingreseCodigo==="Fiestas"||ingreseCodigo==="FIEST
 /*    let precioFiestas= precioSuma(articulo1,articulo3o,articulo2);
    let ivaFiestas= iva(precioFiestas);
    let resultadoFinalFiestas=descuento(ivaFiestas,descuentoFiestas); */
-   precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoFiestas));
-} else if (ingreseCodigo=== "original"||ingreseCodigo==="Original"||ingreseCodigo==="ORIGINAL"){
+   /* precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoFiestas));
+} else if (ingreseCodigo=== "original"||ingreseCodigo==="Original"||ingreseCodigo==="ORIGINAL"){ */
 /*     let precioOriginal= precioSuma(articulo1,articulo2,articulo3);
     let ivaOriginal= iva(precioOriginal);
     let resultadoFinalOriginal=descuento(ivaOriginal,descuentoOriginal); */
-    precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoOriginal));
+/*     precioFinal(descuento(iva(precioSuma(articulo1,articulo2,articulo3)),descuentoOriginal));
 } else {
    precioFinal(iva(precioSuma(articulo1,articulo2,articulo3)));
+} */
+class Producto{
+    constructor(nombre,talle, precio){
+        this.nombre = nombre.toLowerCase();
+        this.talle= talle;
+        this.precio = parseFloat(precio);
+        this.vendido = false;
+        this.stock=10;
+    }
+    descuentoFiesta(){
+        this.precioDescuentoFiesta= (this.precio-100)*1.21;
+    }
+    descuentoOriginal(){
+        this.precioDescuentoOriginal= (this.precio-400)*1.21;
+    }
+    precioIva(){
+        this.precio=this.precio*1.21;
+    }
+    vender(){
+        this.vendido=true;
+        this.stock=this.stock-1;
+    }
 }
 
+const vestidoY = new Producto ("Vestido Yellow","L","2510");
+vestidoY.descuentoFiesta();
+vestidoY.descuentoOriginal();
+vestidoY.precioIva();
+vestidoY.vender();
 
+const vestidoB = new Producto ("Vestido Black","S","5700");
+vestidoB.precioIva();
 
+const vestidoBr = new Producto ("Vestido Briza","M","4500");
+vestidoBr.descuentoOriginal();
+vestidoBr.vender();
+
+const vestidoP = new Producto ("Vestido Pink","XS","4800");
+vestidoP.descuentoFiesta();
+vestidoP.vender();
+
+console.log("Se vendio el" , vestidoY.nombre,  "quedando ", vestidoY.stock , "unidades en stock asi como tambien el ", vestidoP.nombre, "quedando", vestidoP.stock, "unidades en stock");
