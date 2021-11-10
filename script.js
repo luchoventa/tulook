@@ -13,8 +13,8 @@ if(fecha==="si"||fecha==="Si"||fecha==="SI"){
     alert ("respuesta incorrecta, perdiste tu descuento");
 }
 let articulo1 =parseInt( prompt("Ingrese precio del articulo 1"));
-let articulo2=parseInt( prompt("Ingrese precio del articulo 1"));
-let articulo3=parseInt( prompt("Ingrese precio del articulo 1"));
+let articulo2=parseInt( prompt("Ingrese precio del articulo 2"));
+let articulo3=parseInt( prompt("Ingrese precio del articulo 3"));
 function precioSuma (a,b,c){
     let comboTotal= a+b+c;
     return comboTotal;
