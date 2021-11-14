@@ -58,7 +58,11 @@ productos.push (new Producto("Collar Esmeraldas","U",1780));
 productos.push (new Producto("Collar Piedra","U",2510));
 productos.push (new Producto("Aros Brillo","U",4800));
 
+let productosOrdenPrecio=productos.sort(function(a,b){
+    return (a.precio-b.precio);
+})
 
+console.log(productosOrdenPrecio)
 
 
 for (const p of productos){
@@ -83,6 +87,7 @@ const Accesorios=[
     {nombre: "Collar Esmeraldas",talle: "U",precio: 1780},
 ]
 
-Accesorios.sort(function(a,b){
+const accesoriosOrden = Accesorios.sort(function(a,b){
     return (a.precio-b.precio);
 })
+console.log(accesoriosOrden);
