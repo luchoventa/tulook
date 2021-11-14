@@ -63,7 +63,7 @@ class Producto{
     }
 }
 
-const vestidoY = new Producto ("Vestido Yellow","L","2510");
+/* const vestidoY = new Producto ("Vestido Yellow","L","2510");
 vestidoY.descuentoFiesta();
 vestidoY.descuentoOriginal();
 vestidoY.precioIva();
@@ -80,4 +80,4 @@ const vestidoP = new Producto ("Vestido Pink","XS","4800");
 vestidoP.descuentoFiesta();
 vestidoP.vender();
 
-console.log("Se vendio el" , vestidoY.nombre,  "quedando ", vestidoY.stock , "unidades en stock asi como tambien el ", vestidoP.nombre, "quedando", vestidoP.stock, "unidades en stock");
+console.log("Se vendio el" , vestidoY.nombre,  "quedando ", vestidoY.stock , "unidades en stock asi como tambien el ", vestidoP.nombre, "quedando", vestidoP.stock, "unidades en stock");*/
