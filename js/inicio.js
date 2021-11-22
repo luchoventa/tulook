@@ -60,7 +60,7 @@ zapatos.push (new Producto("Sandalias Cardiff","39",2600,"./images/sandalias-car
 const accesorios = []
     accesorios.push (new Producto("Pulsera Diamond","U",1200,"./images/bracelet-g1233c4d0f_640.jpg"));
     accesorios.push (new Producto("Collar Esmeraldas","U",1780,"./images/gemstone-gf1ed91889_640.jpg"));
-    accesorios.push (new Producto("Collar Piedra","U",2510,".images/71GWJdHF6uL._CR0,204,1224,1224_UX256.jpg"));
+    accesorios.push (new Producto("Collar Piedra","U",2510,"./images/71GWJdHF6uL._CR0,204,1224,1224_UX256.jpg"));
     accesorios.push (new Producto("Aros Brillo","U",4800,"./images/645.png"));
 
 let carrito = [];
@@ -87,11 +87,12 @@ function obtenerCarrito(){
 
 
 //suerte//
-let talleVestido=document.getElementById("talle").value="L";
-let talleZapato=document.getElementById("talleZapato").value="38"
-let accesoriosSi=document.getElementById("accesoriosSi").value=true;
+let talleVestido=document.getElementById("talle").value="S";
+let talleZapato=document.getElementById("talleZapato").value="35"
+let accesoriosSi=document.getElementById("accesoriosSi").checked;
 
 const vestidoSuerte=document.getElementById("vestidoSuerte")
+
 if (talleVestido=="S"){
     let vestidoSuerteS=vestidos.find(vSuerteS=> vSuerteS.talle =="S");
     let vestidoSuerteDivS=document.createElement("div")
@@ -177,9 +178,9 @@ switch (talleZapato){
         break;
 }
 const accesoriosSuerte=document.getElementById("accesoriosSuerte");
-if(accesoriosSi=true){
-   let accesoriosSuertePop=accesorios.pop();
-    let accesoriosSuerteDiv=document.createElement("div");
+if(accesoriosSi== true){
+   let accesoriosSuertePop = accesorios[Math.floor(Math.random()*accesorios.length)];
+     accesoriosSuerteDiv=document.createElement("div");
     accesoriosSuerteDiv.innerHTML=
     `<h4> Accesorio:</h4>
     <h5> Accesorio: ${accesoriosSuertePop.nombre} </h5>
