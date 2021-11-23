@@ -87,12 +87,11 @@ function obtenerCarrito(){
 
 
 //suerte//
-let talleVestido=document.getElementById("talle").value="S";
+let talleVestido=document.getElementById("talle").value="L";
 let talleZapato=document.getElementById("talleZapato").value="35"
 let accesoriosSi=document.getElementById("accesoriosSi").checked;
 
 const vestidoSuerte=document.getElementById("vestidoSuerte")
-
 if (talleVestido=="S"){
     let vestidoSuerteS=vestidos.find(vSuerteS=> vSuerteS.talle =="S");
     let vestidoSuerteDivS=document.createElement("div")
@@ -175,8 +174,10 @@ switch (talleZapato){
         let sinZapato=document.createElement("p");
         sinZapato.innerHTML= `lo sentimos no tenemos tu talle`
         zapatoSuerte.appendChild(sinZapato);
-        break;
-}
+      break;
+    }  
+
+
 const accesoriosSuerte=document.getElementById("accesoriosSuerte");
 if(accesoriosSi== true){
    let accesoriosSuertePop = accesorios[Math.floor(Math.random()*accesorios.length)];
