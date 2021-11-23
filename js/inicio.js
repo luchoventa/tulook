@@ -87,11 +87,12 @@ function obtenerCarrito(){
 
 
 //suerte//
-let talleVestido=document.getElementById("talle").value="L";
-let talleZapato=document.getElementById("talleZapato").value="35"
+let talleVestido=document.getElementById("talle").value="S";
+let talleZapato=document.getElementById("talleZapato").value="38"
 let accesoriosSi=document.getElementById("accesoriosSi").checked;
 
 const vestidoSuerte=document.getElementById("vestidoSuerte")
+function vestidoLook() { 
 if (talleVestido=="S"){
     let vestidoSuerteS=vestidos.find(vSuerteS=> vSuerteS.talle =="S");
     let vestidoSuerteDivS=document.createElement("div")
@@ -137,8 +138,11 @@ if (talleVestido=="S"){
     sinTalle.innerHTML= `No ha seleccionado talle`
     vestidoSuerte.appendChild(sinTalle)
 }
+}
+vestidoLook();
 
 const zapatoSuerte =document.getElementById("zapatoSuerte")
+function zapatoLook() { 
 switch (talleZapato){
     case "35":
         let zapato35=zapatos.find(z35=>z35.talle =="35");
@@ -176,9 +180,10 @@ switch (talleZapato){
         zapatoSuerte.appendChild(sinZapato);
       break;
     }  
-
-
+}
+zapatoLook()
 const accesoriosSuerte=document.getElementById("accesoriosSuerte");
+function accesoriosLook (){ 
 if(accesoriosSi== true){
    let accesoriosSuertePop = accesorios[Math.floor(Math.random()*accesorios.length)];
      accesoriosSuerteDiv=document.createElement("div");
@@ -193,8 +198,9 @@ if(accesoriosSi== true){
     let accesoriosNo=document.createElement("p");
     accesoriosNo.innerHTML=`Selecciono sin accesorios`;
     accesoriosSuerte.appendChild(accesoriosNo)
-
 }
+}
+accesoriosLook();
 
 let reservarLook= document.getElementById("reservarLook");
 let reservarLookBoton=document.createElement("div");
