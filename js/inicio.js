@@ -87,8 +87,8 @@ function obtenerCarrito(){
 
 
 //suerte//
-let talleVestido=document.getElementById("talle").value="S";
-let talleZapato=document.getElementById("talleZapato").value="38"
+let talleVestido=document.getElementById("talle").value="M";
+let talleZapato=document.getElementById("talleZapato").value="39"
 let accesoriosSi=document.getElementById("accesoriosSi").checked;
 
 const vestidoSuerte=document.getElementById("vestidoSuerte")
@@ -200,7 +200,8 @@ if(accesoriosSi== true){
     accesoriosSuerte.appendChild(accesoriosNo)
 }
 }
-accesoriosLook();
+accesoriosLook(); 
+
 
 let reservarLook= document.getElementById("reservarLook");
 let reservarLookBoton=document.createElement("div");
