@@ -87,13 +87,21 @@ function obtenerCarrito(){
 
 
 //suerte//
-let talleVestido=document.getElementById("talle").value="S";
-let talleZapato=document.getElementById("talleZapato").value="38"
-let accesoriosSi=document.getElementById("accesoriosSi").checked;
 
-const vestidoSuerte=document.getElementById("vestidoSuerte")
+let talleVestido=document.getElementById("talle");
+let talleZapato=document.getElementById("talleZapato");
+let accesoriosSi=document.getElementsByClassName("accesoriosSi");
+
+let miFormulario=document.getElementById("formulario")
+console.log(miFormulario)
+
+function formularioSuerte(event){
+    event.preventDefault();
+
+
+    const vestidoSuerte=document.getElementById("vestidoSuerte")
 function vestidoLook() { 
-if (talleVestido=="S"){
+if (talleVestido.value=="S"){
     let vestidoSuerteS=vestidos.find(vSuerteS=> vSuerteS.talle =="S");
     let vestidoSuerteDivS=document.createElement("div")
     vestidoSuerteDivS.innerHTML = 
@@ -103,7 +111,7 @@ if (talleVestido=="S"){
     <img src=${vestidoSuerteS.imagen} height=200px>
     `
     vestidoSuerte.appendChild(vestidoSuerteDivS)
-}else if (talleVestido=="M"){
+}else if (talleVestido.value=="M"){
     let vestidoSuerteM=vestidos.find(vSuerteM=> vSuerteM.talle =="M");
     let vestidoSuerteDivM=document.createElement("div")
     vestidoSuerteDivM.innerHTML = 
@@ -113,7 +121,7 @@ if (talleVestido=="S"){
     <img src=${vestidoSuerteM.imagen} height=200px>
     `
     vestidoSuerte.appendChild(vestidoSuerteDivM)
-}else if (talleVestido=="L"){
+}else if (talleVestido.value=="L"){
     let vestidoSuerteL=vestidos.find(vSuerteM=> vSuerteM.talle =="L");
     let vestidoSuerteDivL=document.createElement("div")
     vestidoSuerteDivL.innerHTML = 
@@ -123,7 +131,7 @@ if (talleVestido=="S"){
     <img src=${vestidoSuerteL.imagen} height=200px>
     `
     vestidoSuerte.appendChild(vestidoSuerteDivL)
-}else if (talleVestido=="XS"){
+}else if (talleVestido.value=="XS"){
     let vestidoSuerteXS=vestidos.find(vSuerteM=> vSuerteM.talle =="XS");
     let vestidoSuerteDivXS=document.createElement("div");
     vestidoSuerteDivXS.innerHTML = 
@@ -143,7 +151,7 @@ vestidoLook();
 
 const zapatoSuerte =document.getElementById("zapatoSuerte")
 function zapatoLook() { 
-switch (talleZapato){
+switch (talleZapato.value){
     case "35":
         let zapato35=zapatos.find(z35=>z35.talle =="35");
         let zapato35Div=document.createElement("div");
@@ -184,7 +192,7 @@ switch (talleZapato){
 zapatoLook()
 const accesoriosSuerte=document.getElementById("accesoriosSuerte");
 function accesoriosLook (){ 
-if(accesoriosSi== true){
+if(accesoriosSi==true){
    let accesoriosSuertePop = accesorios[Math.floor(Math.random()*accesorios.length)];
      accesoriosSuerteDiv=document.createElement("div");
     accesoriosSuerteDiv.innerHTML=
@@ -201,9 +209,18 @@ if(accesoriosSi== true){
 }
 }
 accesoriosLook();
+miFormulario.reset()
+
+}
+miFormulario.addEventListener("submit", formularioSuerte)
 
 let reservarLook= document.getElementById("reservarLook");
 let reservarLookBoton=document.createElement("div");
     reservarLookBoton.innerHTML= 
     `<button> Reservar Look </button>`
 reservarLook.appendChild(reservarLookBoton)
+
+
+
+   
+

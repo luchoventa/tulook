@@ -125,13 +125,14 @@
     <!-- suerte-->
     <div>
       <h4 class="d-flex justify-content-center mt-5 my-5">Te armamos tu look</h4>
+      <form action="" id="formulario">
       <label for="talle">Talle Vestido</label><input id="talle" type="text">
       <label for="talleZapato">Talle Zapato</label> <input id="talleZapato" type="number">
       <div>
       <label class="form-check-label  fw-bold" for="gridRadios1">queres sumar accesorios?</label>
       <div class="form-check">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="accesoriosSi" checked>
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id ="accesoriosSi" checked >
           <label class="form-check-label" for="flexRadioDefault1">
             Si
           </label>
@@ -143,6 +144,8 @@
           </label>
         </div>
       </div>
+      <button type="submit" value="enviar" id="submit">Buscar Look</button>
+    </form>
 </div>
 <div class="row">
 <div id="vestidoSuerte" class="col-lg-4  d-flex justify-content-center"></div>
