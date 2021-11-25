@@ -1,4 +1,4 @@
-let nombre= localStorage.getItem("usuario");
+ let nombre= localStorage.getItem("usuario");
 if (nombre==null){
     nombre= prompt("como es tu nombre?");
     nombre=localStorage.setItem("usuario",nombre);
@@ -44,47 +44,51 @@ let descuentoOriginal=""
 }
 
 const vestidos= []
-    vestidos.push (new Producto("Vestido Yellow","L",2510,"./images/woman-gdc153eed8_640.jpg"));
-    vestidos.push (new Producto("Vestido Briza","M",4500,"./images/woman-g95e761da7_640.jpg"));
-    vestidos.push (new Producto("Vestido Black","S",5700,"./images/woman-ga02c37b71_640.jpg"));
-    vestidos.push (new Producto("Vestido Pink","XS",4800,"./images/woman-g498c5120f_640.jpg"));
+    vestidos.push (new Producto("Vestido Yellow","L",2510,"./images/vestidoYellow.jpg"));
+    vestidos.push (new Producto("Vestido Briza","M",4500,"./vestidoBrisa.jpg"));
+    vestidos.push (new Producto("Vestido Black","S",5700,"./images/vestidoBlack.jpg"));
+    vestidos.push (new Producto("Vestido Pink","XS",4800,"./images/vestidoPink.jpg"));
 
 
 const zapatos = []
-zapatos.push (new Producto("Zapato Sky","38",2700,"./images/feet-g57f496f10_640.jpg"));
-zapatos.push (new Producto("Sandalia Arte","38",4150,"./images/cecd68009d4748adaf193112434afbc0.jpg"));
-zapatos.push (new Producto("Zapatos Dream","35",2510,"./images/dream-shoes-g8c5b6c4d0_640.jpg"));
+zapatos.push (new Producto("Zapato Sky","38",2700,"./images/zapatosNegro.jpg"));
+zapatos.push (new Producto("Sandalia Arte","38",4150,"./images/zapatosArte.jpg"));
+zapatos.push (new Producto("Zapatos Dream","35",2510,"./images/zapatosPlateados.jpg"));
 zapatos.push (new Producto("Sandalias Cardiff","39",2600,"./images/sandalias-cardiff-cobre.jpg"));
 
 
 const accesorios = []
-    accesorios.push (new Producto("Pulsera Diamond","U",1200,"./images/bracelet-g1233c4d0f_640.jpg"));
-    accesorios.push (new Producto("Collar Esmeraldas","U",1780,"./images/gemstone-gf1ed91889_640.jpg"));
-    accesorios.push (new Producto("Collar Piedra","U",2510,"./images/71GWJdHF6uL._CR0,204,1224,1224_UX256.jpg"));
-    accesorios.push (new Producto("Aros Brillo","U",4800,"./images/645.png"));
+    accesorios.push (new Producto("Pulsera Diamond","U",1200,"./images/pulseraPiedras.jpg"));
+    accesorios.push (new Producto("Collar Esmeraldas","U",1780,"./images/collarEsmeraldas.jpg"));
+    accesorios.push (new Producto("Pulsera Esmeraldas","U",3510,"./images/pulseraEsmeraldas.jpg"));
+    accesorios.push (new Producto("Aros Brillo","U",4800,"./images/arosBrillo.jpg"));
 
 let carrito = [];
-
-carrito.push(accesorios[1].sell());
-
-let item=vestidos.find(small=> small.talle =="S");
-carrito.push(item.sell());
-
-let zapatoBarato=zapatos.filter(zapatos=>zapatos.precio<3000);
-carrito.push(zapatoBarato);
 
 function guardarCarrito(){
     let carritoString=JSON.stringify(carrito);
     localStorage.setItem("carrito",carritoString)
+    console.log("se ha guardado el carrito")
 }
-function obtenerCarrito(){
+function verCarrito(){
     let carritoString= localStorage.getItem("carrito");
     let carritoDeCompra= JSON.parse(carritoString);
     console.log(carritoDeCompra)
     carrito=carritoDeCompra
 }
 
+//pagina//
 
+for (const vestido of vestidos){
+    let contenedorVestidos=document.createElement("div");
+    contenedorVestidos.innerHTML=
+    `<img src=${vestido.imagen} height=200px>
+    <h5> Producto: ${vestido.nombre}</h5> 
+    <h5> Talle: ${vestido.talle}
+    <h6> Precio: $ ${vestido.precio}</h6>
+`
+document.body.appendChild(contenedorVestidos)
+}
 
 //suerte//
 
@@ -94,6 +98,8 @@ let accesoriosSi=document.getElementsByClassName("accesoriosSi");
 
 let miFormulario=document.getElementById("formulario")
 console.log(miFormulario)
+
+let lookSuerte = []
 
 function formularioSuerte(event){
     event.preventDefault();
@@ -146,6 +152,7 @@ if (talleVestido.value=="S"){
     sinTalle.innerHTML= `No ha seleccionado talle`
     vestidoSuerte.appendChild(sinTalle)
 }
+console.log(`el vestido adecuado es ${vestidoSuerte.toString()}}`)
 }
 vestidoLook();
 
@@ -192,7 +199,7 @@ switch (talleZapato.value){
 zapatoLook()
 const accesoriosSuerte=document.getElementById("accesoriosSuerte");
 function accesoriosLook (){ 
-if(accesoriosSi==true){
+if(accesoriosSi.checked==true){
    let accesoriosSuertePop = accesorios[Math.floor(Math.random()*accesorios.length)];
      accesoriosSuerteDiv=document.createElement("div");
     accesoriosSuerteDiv.innerHTML=
@@ -220,7 +227,19 @@ let reservarLookBoton=document.createElement("div");
     `<button> Reservar Look </button>`
 reservarLook.appendChild(reservarLookBoton)
 
+let borrarLook= document.getElementById("borrarLook");
+let borrarLookBoton=document.createElement("div");
+    borrarLookBoton.innerHTML= 
+    `<button> Borrar Look </button>`
+borrarLook.appendChild(borrarLookBoton)
+borrarLookBoton.addEventListener("click", ()=>{
+        document.getElementById("vestidoSuerte").innerHTML=""
+        document.getElementById("zapatoSuerte").innerHTML=""
+        document.getElementById("accesoriosSuerte").innerHTML=""
+})
 
 
-   
+
+
+
 

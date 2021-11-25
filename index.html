@@ -62,69 +62,16 @@
     </div>
     </div>
 <!--     buscar por categoria -->
-    <div class="row mt-5">
-        <div class="col-lg-4">
-            <a href="./pages/vestimenta.html" class="etiquetas d-flex justify-content-center">Vestimenta</a>
-            <a href="./pages/vestimenta.html" class= " d-flex justify-content-center"><img class= "imagenEtiquetas" src="./images/one-g6ead1f00a_640.jpg" alt=""></a>
-        </div>
-        <div class="col-lg-4">
-            <a href="./pages/zapatos.html" class="etiquetas d-flex justify-content-center">Zapatos</a>
-          <a href="./pages/zapatos.html"class= " d-flex justify-content-center"> <img class= "imagenEtiquetas d-flex justify-content-center" src="./images/dream-shoes-g8c5b6c4d0_640.jpg" alt=""></a>
-        </div>
-        <div class="col-lg-4">
-            <a href="./pages/accesorios.html" class="etiquetas d-flex justify-content-center">Accesorios</a>
-          <a href="./pages/accesorios.html" class= " d-flex justify-content-center"> <img class= "imagenEtiquetas" src="./images/gemstone-gf1ed91889_640.jpg" alt=""></a>
-        </div>
-    </div>
-  <!--   destacados -->
-    <div>
-            <h4 class="d-flex justify-content-center mt-5 my-5">Destacados</h4>
-    </div>
-    <div class="row d-flex destacados">
-        <div class="card col-lg-3" style="width: 18rem;">
-            <img src="./images/woman-g95e761da7_640.jpg" class="card-img-top imagenDestacados" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Vestido Briza</h5>
-              <p class="card-text">Vestido ideal para cualquier evento al mediodia</p>
-              <p class="card-text">Talle M</p>
-              <p class="card-text">$4500</p>
-              <a href="#" class="btn btnSubmit">Reservar</a>
-            </div>
-          </div>
-          <div class="card col-lg-3" style="width: 18rem;">
-            <img src="./images/bracelet-g1233c4d0f_640.jpg" class="card-img-top imagenDestacados" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Pulsera diamond</h5>
-              <p class="card-text">El toque perfecto para cualquier atuendo</p>
-              <p class="card-text">Talle: U</p>
-              <p class="card-text">$1200</p>
-              <a href="#" class="btn btnSubmit">Reservar</a>
-            </div>
-          </div>
-          <div class="card col-lg-3" style="width: 18rem;">
-            <img src="./images/woman-ga02c37b71_640.jpg" class="card-img-top imagenDestacados" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Vestido Black</h5>
-              <p class="card-text">Vestido clasico vintage ideal para cualquier ocasion</p>
-              <p class="card-text">Talle: S</p>
-              <p class="card-text">$5700</p>
-              <a href="#" class="btn btnSubmit">Reservar</a>
-            </div>
-          </div>
-          <div class="card col-lg-3" style="width: 18rem;">
-            <img src="./images/feet-g57f496f10_640.jpg" class="card-img-top imagenDestacados" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Zapatos Sky</h5>
-              <p class="card-text">Ideales para cualquier noche de fiesta</p>
-              <p class="card-text">Talle: 38</p>
-              <p class="card-text">$2600</p>
-              <a href="#" class="btn btnSubmit">Reservar</a>
-            </div>
-          </div>
+    <div class="row mt-5" id="filtros"></div>
+    <div class="row">
+      <div id="productosVestidos"></div>
+      <div id="productosZapatos"></div>
+      <div id="productosAccesorios"></div>
     </div>
     <!-- suerte-->
-    <div>
-      <h4 class="d-flex justify-content-center mt-5 my-5">Te armamos tu look</h4>
+   <div>
+    <h4 class="d-flex justify-content-center mt-5 my-5">Te armamos tu look</h4>
+    <div class="d-flex justify-content-center">
       <form action="" id="formulario">
       <label for="talle">Talle Vestido</label><input id="talle" type="text">
       <label for="talleZapato">Talle Zapato</label> <input id="talleZapato" type="number">
@@ -132,7 +79,7 @@
       <label class="form-check-label  fw-bold" for="gridRadios1">queres sumar accesorios?</label>
       <div class="form-check">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id ="accesoriosSi" checked >
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id ="accesoriosSi" >
           <label class="form-check-label" for="flexRadioDefault1">
             Si
           </label>
@@ -147,12 +94,17 @@
       <button type="submit" value="enviar" id="submit">Buscar Look</button>
     </form>
 </div>
-<div class="row">
+<div class="row" id="lookAleatorio">
 <div id="vestidoSuerte" class="col-lg-4  d-flex justify-content-center"></div>
 <div id="zapatoSuerte" class="col-lg-4  d-flex justify-content-center"></div>
 <div id="accesoriosSuerte" class="col-lg-4  d-flex justify-content-center"></div>
-<div id="reservarLook" class=" d-flex justify-content-center"></div>
+<div class="row d-flex">
+<div id="reservarLook" class=" col-lg-6 d-flex justify-content-center"></div>
+<div id="borrarLook" class="col-lg-6  d-flex justify-content-center"></div>
 </div>
+</div>
+</div>
+
   <!--   footer -->
     <footer class="row mt-5 >">
       <div class="col-lg-4 text-center mt-3">
@@ -170,7 +122,8 @@
             <p>Lucia Abramzon</p>
         </div>
     </footer>
+    
     <script src="./js/inicio.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
