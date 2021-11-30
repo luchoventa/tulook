@@ -32,7 +32,7 @@
                 <a class="nav-link" href="./pages/accesorios.html">Accesorios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Carrito</a>
+                <a class="nav-link" href="./pages/carrito.html">Carrito</a>
               </li>
             </ul>
             <form class="d-flex">
@@ -70,15 +70,24 @@
       <div id="productosAccesorios"  class="mt-5"></div>
     </div>
     <div class="col-lg-4">
-    <div id="carrito">
-      <h2>Carrito</h2>
+      <div id="carrito">
+        <h2>Carrito</h2>
+      </div>
+      <div>
+      <div id="precio"></div>
+      <div id=iva></div>
+
+      <div id="descuento">
+        <input id="cuponTipo"  type="text" placeholder="Tenes un cupon?"><button id="cupon">Aplicar</button>
+      </div>
+      <div id="descuentoDiv"></div>
+      <div id=total></div>
+      <div id="comprar"></div>
+
     </div>
-    <div>
-    <div id="precio"></div>
-    <div id="comprar"></div>
-  </div>
-  </div>
-  </div>
+    </div>
+    </div>
+  
     <!-- suerte-->
    <div>
     <h4 class="d-flex justify-content-center mt-5 my-5">Te armamos tu look</h4>
@@ -86,7 +95,7 @@
       <form action="" id="formulario">
       <label for="talle">Talle Vestido</label><input id="talle" type="text">
       <label for="talleZapato">Talle Zapato</label> <input id="talleZapato" type="number">
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center formAccesorios">
       <label class="form-check-label  fw-bold " for="gridRadios1">queres sumar accesorios?</label>
       <div class="form-check">
         <div class="form-check">
@@ -111,6 +120,7 @@
 <div id="zapatoSuerte" class="col-lg-4  d-flex justify-content-center"></div>
 <div id="accesoriosSuerte" class="col-lg-4  d-flex justify-content-center"></div>
 <div class="row mt-5">
+</div>
 <div id="reservarLook" class=" col-lg-6 d-flex justify-content-center"></div>
 <div id="borrarLook" class="col-lg-6  d-flex justify-content-center"></div>
 </div>

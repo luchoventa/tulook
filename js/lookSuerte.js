@@ -20,101 +20,107 @@ function formularioSuerte(event){
         suma+= accesoriosSuertePop.precio
         accesoriosSuerte.appendChild(accesoriosSuerteDiv)
     } else{
-        let sinTalleAccesorios=document.createElement("p")
-        sinTalleAccesorios.innerHTML= `No ha seleccionado accesorios`
-        accesoriosSuerte.appendChild(sinTalleAccesorios)
     }
 
 const vestidoSuerte=document.getElementById("vestidoSuerte")
 function vestidoLook() { 
+    let vestidoSuerteDiv=document.createElement("div")
 if (talleVestido.value=="S"){
     let vestidoSuerteS=vestidos.find(vSuerteS=> vSuerteS.talle =="S");
-    let vestidoSuerteDivS=document.createElement("div")
-    vestidoSuerteDivS.innerHTML = 
+
+    vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
     <h5> Producto: ${vestidoSuerteS.nombre}</h5> 
     <h6> Precio: $ ${vestidoSuerteS.precio}</h6>
     <img src=${vestidoSuerteS.imagen} height=200px>`
     suma+= vestidoSuerteS.precio
-    vestidoSuerte.appendChild(vestidoSuerteDivS)
+    vestidoSuerte.appendChild(vestidoSuerteDiv)
 }else if (talleVestido.value=="M"){
     let vestidoSuerteM=vestidos.find(vSuerteM=> vSuerteM.talle =="M");
-    let vestidoSuerteDivM=document.createElement("div")
-    vestidoSuerteDivM.innerHTML = 
+
+    vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
     <h5> Producto: ${vestidoSuerteM.nombre}</h5> 
     <h6> Precio: $ ${vestidoSuerteM.precio}</h6>
     <img src=${vestidoSuerteM.imagen} height=200px>
     `
     suma+= vestidoSuerteM.precio
-    vestidoSuerte.appendChild(vestidoSuerteDivM)
+    vestidoSuerte.appendChild(vestidoSuerteDiv)
 }else if (talleVestido.value=="L"){
     let vestidoSuerteL=vestidos.find(vSuerteM=> vSuerteM.talle =="L");
-    let vestidoSuerteDivL=document.createElement("div")
-    vestidoSuerteDivL.innerHTML = 
+
+    vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
     <h5> Producto: ${vestidoSuerteL.nombre}</h5> 
     <h6> Precio: $ ${vestidoSuerteL.precio}</h6>
     <img src=${vestidoSuerteL.imagen} height=200px>
     `
     suma+= vestidoSuerteL.precio
-    vestidoSuerte.appendChild(vestidoSuerteDivL)
+    vestidoSuerte.appendChild(vestidoSuerteDiv)
 }else if (talleVestido.value=="XS"){
     let vestidoSuerteXS=vestidos.find(vSuerteM=> vSuerteM.talle =="XS");
-    let vestidoSuerteDivXS=document.createElement("div");
-    vestidoSuerteDivXS.innerHTML = 
+
+    vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
     <h5> Producto: ${vestidoSuerteXS.nombre}</h5> 
     <h6> Precio: $ ${vestidoSuerteXS.precio}</h6>
     <img src=${vestidoSuerteXS.imagen} height=200px>
     `
     suma+= vestidoSuerteXS.precio
-    vestidoSuerte.appendChild(vestidoSuerteDivXS)
-} else{
+    vestidoSuerte.appendChild(vestidoSuerteDiv)
+} else if(talleVestido.value==""){
+    let vacio=document.createElement("p")
+    vacio.innerHTML= ``
+    vestidoSuerte.appendChild(vacio)
+}
+ else{
     let sinTalle=document.createElement("p")
-    sinTalle.innerHTML= `No ha seleccionado talle`
+    sinTalle.innerHTML= `No tenemos su talle talle`
     vestidoSuerte.appendChild(sinTalle)
 }
-console.log(`el vestido adecuado es ${vestidoSuerte.toString()}}`)
 }
 vestidoLook();
 
 const zapatoSuerte =document.getElementById("zapatoSuerte")
 function zapatoLook() { 
+    let zapatoDiv=document.createElement("div");
 switch (talleZapato.value){
     case "35":
         let zapato35=zapatos.find(z35=>z35.talle =="35");
-        let zapato35Div=document.createElement("div");
-        zapato35Div.innerHTML=
+
+        zapatoDiv.innerHTML=
         `<h4> Zapatos: </h4>
         <h5> Modelo: ${zapato35.nombre}</h5>
         <h6> Precio: ${zapato35.precio} </h6>
         <img src= ${zapato35.imagen} height=200px>`
         suma+= zapato35.precio
-        zapatoSuerte.appendChild(zapato35Div);
+        zapatoSuerte.appendChild(zapatoDiv);
         break;
     case "38":
         let zapato38=zapatos.find(z38=>z38.talle =="38");
-        let zapato38Div=document.createElement("div");
-        zapato38Div.innerHTML=
+        zapatoDiv.innerHTML=
         `<h4> Zapatos: </h4>
         <h5> Modelo: ${zapato38.nombre}</h5>
         <h6> Precio: ${zapato38.precio} </h6>
         <img src= ${zapato38.imagen} height=200px>`
         suma+= zapato38.precio
-        zapatoSuerte.appendChild(zapato38Div);
+        zapatoSuerte.appendChild(zapatoDiv);
         break;   
     case "39":
         let zapato39=zapatos.find(z39=>z39.talle =="39");
-        let zapato39Div=document.createElement("div");
-        zapato39Div.innerHTML=
+        zapatoDiv.innerHTML=
         `<h4> Zapatos: </h4>
         <h5> Modelo: ${zapato39.nombre}</h5>
         <h6> Precio: ${zapato39.precio} </h6>
         <img src= ${zapato39.imagen} height=200px>`
         suma+= zapato39.precio
-        zapatoSuerte.appendChild(zapato39Div);
-        break;      
+        zapatoSuerte.appendChild(zapatoDiv);
+        break;
+    case "":
+        let sinZapatoVacio=document.createElement("p");
+        sinZapatoVacio.innerHTML= ``
+        zapatoSuerte.appendChild(sinZapatoVacio);
+      break;
     default:
         let sinZapato=document.createElement("p");
         sinZapato.innerHTML= `lo sentimos no tenemos tu talle`
@@ -123,7 +129,6 @@ switch (talleZapato.value){
     }  
 }
 zapatoLook()
-console.log(suma)
 miFormulario.reset()
 }
 miFormulario.addEventListener("submit", formularioSuerte)
@@ -143,9 +148,11 @@ let borrarLookBoton=document.createElement("div");
     `<button> Borrar Look </button>`
 borrarLook.appendChild(borrarLookBoton)
 borrarLookBoton.addEventListener("click", ()=>{
-        document.getElementById("vestidoSuerte").innerHTML=""
-        document.getElementById("zapatoSuerte").innerHTML=""
-        document.getElementById("accesoriosSuerte").innerHTML=""
+        document.getElementById("vestidoSuerte").innerHTML=" "
+        document.getElementById("zapatoSuerte").innerHTML=" "
+        document.getElementById("accesoriosSuerte").innerHTML=" "
+
 })
+
 
 
