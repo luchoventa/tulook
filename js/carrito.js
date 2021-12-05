@@ -1,109 +1,191 @@
-let carrito = [];
+$(()=>{
+infoCarrito=localStorage.getItem("carrito")
+infoCarrito=JSON.parse(infoCarrito)
 
-function guardarCarrito(){
-    let carritoString=JSON.stringify(carrito);
-    localStorage.setItem("carrito",carritoString)
-    console.log("se ha guardado el carrito")
-}
-function verCarrito(){
-    let carritoString= localStorage.getItem("carrito");
-    let carritoDeCompra= JSON.parse(carritoString);
-    console.log(carritoDeCompra)
-    carrito=carritoDeCompra
-}
+$("#cupon").append(`
+    <input type=text id=cuponTipo>
+    <button id=btnDescuento> Aplicar cupon </button>
+`)
+let precioTotal=0
+let iva=precioTotal*0.21
+let descuento=0
 
-function mostrarCarrito(){
-    let contenedor=document.getElementById("carrito");
-    let precioTotal=0
-    contenedor.innerHTML="";
-    
-    htmlString= `<h2> Carrito </h2>
-                                <ul>`;
-    for(const id in carrito){
-    let producto=carrito[id]
-        htmlString+=
-         `<li><img src=${producto.imagen} height=75px> ${producto.nombre} $ ${producto.precio}  
-         </li>
-         <button id=carrito_${id} class="borrar"> Eliminar </button>`
-
-        
-         precioTotal+=producto.precio;
+mostrarCarrito()
+function mostrarCarrito(){ 
+let carritoHTML="<p>";
+    for (const id in infoCarrito){ 
+        let producto=infoCarrito[id]
+        carritoHTML+=
+         `<div class="carritoProductos">
+        <img src=.${producto.imagen} height=150px>
+        <h5> ${producto.nombre}</h5> 
+        <h5> Talle: ${producto.talle}</h5>
+        <h6 > Precio: $ ${producto.precio}</h6>
+        <button id="carrito_${id}"  class="borrar"> Eliminar </button>
+        </div>`
+        carritoHTML+="<p>"
+        $("#productosCarrito").html(carritoHTML)
+        precioTotal+=producto.precio; 
     }
-    htmlString+= `</ul>`
 
-    
-    contenedor.innerHTML=htmlString;
-    let DivPrecio=document.getElementById("precio");
-    DivPrecio.innerHTML=`TOTAL ${precioTotal}`
-
-    let divIva=document.getElementById("iva")
-    divIva.innerHTML=`IVA $ ${precioTotal*0.21}`
-    
-    let cuponTipo=document.getElementById("cuponTipo")
-    let btnDescuento=document.getElementById("cupon")
-    let descuento=0
-
-    const descuentoDiv=document.getElementById("descuentoDiv")
-    function descuentoCupon(){
-        if(cuponTipo.value==="fiestas"){
-            descuentoCompra=100
-            let descuentoCompraDiv=document.createElement("div");
-            descuentoCompraDiv.innerHTML=`- $100`
-            descuentoDiv.appendChild(descuentoCompraDiv)
-            descuento+=descuentoCompra
-        }else if(cuponTipo.value==="original"){
-             descuentoCompra=400
-             let descuentoCompraDiv=document.createElement("div");
-             descuentoCompraDiv.innerHTML=`- $400`
-             descuentoDiv.appendChild(descuentoCompraDiv)
-             descuento+=descuentoCompra
-        } else{
-            descuentoCompra=0
-            let descuentoCompraDiv=document.createElement("div");
-            descuentoCompraDiv.innerHTML=`0`
-            descuentoDiv.appendChild(descuentoCompraDiv)
-            descuento+=descuentoCompra
+let descuento= 0
+function descuentoCupon(){ 
+        $("#cuponTipo").change((e)=>{
+        if(e.target.value=="fiestas"){
+        descuento=100
+        $("#descuento").html(`descuento $ ${-descuento}`)
+        }else if(e.target.value=="original"){
+        descuento=400
+        $("#descuento").html(`descuento $ ${-descuento}`)
+        }else{
+        descuento=0
+        $("#descuento").html(`descuento $ ${-descuento}`)
         }
+        })
+            $("#btnDescuento").click(()=>{ descuentoCupon()
+                 total()})
+        
+        } 
+
+let iva=precioTotal*0.21
+function precio(){ 
+        $("#total").html(`Subtotal: $ ${precioTotal}`);
+        $("#iva").html (`Iva: $ ${iva}`)
     }
-    
-    btnDescuento.addEventListener("click", () => { 
-        descuentoCupon ()
-        let subTotal=document.getElementById("total");
 
-    subTotal.innerHTML=`TOTAL ${precioTotal*1.21-descuento}`
-     eliminarElemento()
+function total(){
+        $("#carritoTotal").html(`Total a pagar: $ ${precioTotal+iva-descuento}`)
+    }
 
-    })
+precio()
+btnEliminar()
+descuentoCupon()
+total()
 
-    
-    
 }
-function eliminarElemento() {
-    let btnEliminar=document.getElementsByClassName("borrar");
 
-    for  (const boton of btnEliminar){
-        boton.onclick= ()=>{
-        let id=boton.getAttribute("id");
+function btnEliminar() {  
+    let borrar=document.getElementsByClassName("borrar")
+    for  (const btn of borrar){
+        btn.onclick=()=>{ 
+        let id=btn.getAttribute("id");
         idNumber=id.split("_")[1];
-        carrito.splice(idNumber,1)
-        
-        mostrarCarrito()
+        localStorage.removeItem(carrito.splice(idNumber,1)) 
+        console.log(carrito)
+    
+       }
         }
+  
+} 
+
+/* $(()=>{
+    infoCarrito=localStorage.getItem("carrito")
+    infoCarrito=JSON.parse(infoCarrito)
+    
+    
+    let precioTotal=0
+    
+    mostrarCarrito()
+    function mostrarCarrito(){ 
+    let carritoHTML="<p>";
+    for (const id in infoCarrito){ 
+        let producto=infoCarrito[id]
+        carritoHTML+=
+             `<div class="carritoProductos">
+            <img src=.${producto.imagen} height=150px>
+            <h5> ${producto.nombre}</h5> 
+            <h5> Talle: ${producto.talle}</h5>
+            <h6 > Precio: $ ${producto.precio}</h6>
+            <button id="carrito_${id}"  class="borrar"> Eliminar </button>
+        </div>`
+        carritoHTML+="<p>"
+    
+        $("#productosCarrito").html(carritoHTML)
+        precioTotal+=producto.precio;
+    
     }
-}
+    
+    let iva=precioTotal*0.21
+    $("#total").html(`Subtotal: $ ${precioTotal}`)
+    $("#iva").html (`Iva: $ ${iva}`)
+    
+    
+    $("#cupon").append(`
+        <input type=text id=cuponTipo>
+        <button id=btnDescuento> Aplicar cupon </button>
+    `)
+    
+    let descuento= 0
+    function descuentoCupon(){ 
+    $("#cuponTipo").change((e)=>{
+        if(e.target.value=="fiestas"){
+            descuento=100
+            $("#descuento").html(`descuento $ ${-descuento}`)
+        }else if(e.target.value=="original"){
+            descuento=400
+            $("#descuento").html(`descuento $ ${-descuento}`)
+        }else{
+            descuento=0
+            $("#descuento").html(`descuento $ ${-descuento}`)
+        }
+        carritoTotal()
+    })
+    } 
+    $("#btnDescuento").click(()=>{ 
+        descuentoCupon()})
+        function carritoTotal(){ 
+    $("#carritoTotal").html(`Total a pagar: $ ${precioTotal+iva-descuento}`)}
+    btnEliminar()
+    }
+    
+    
+    
+    
+    function btnEliminar() {  
+        let borrar=document.getElementsByClassName("borrar")
+        for  (const btn of borrar){
+            btn.onclick=()=>{ 
+            let id=btn.getAttribute("id");
+            idNumber=id.split("_")[1];
+           let eliminado= carrito.splice(idNumber,1) 
+            localStorage.removeItem(eliminado)
+            console.log(eliminado)
+    
+        
+           }
+            }
+      
+    } 
+    
+    
+    
+    
+    $("#comprar").click(()=>{
+        alert("Su compra esta siendo procesada")
+        localStorage.removeItem("carrito")
+        document.getElementById("productosCarrito").innerHTML=" "
+        document.getElementById("total").innerHTML=" "
+        document.getElementById("iva").innerHTML=" "
+        document.getElementById("cupon").innerHTML=" "
+        document.getElementById("descuento").innerHTML=" "
+    })
+    
+    }) */
 
 
-let btnComprar=document.getElementById("comprar");
-btnComprar.innerHTML= `<button>Comprar</button>`
-btnComprar.addEventListener("click",()=>{ 
-     alert("Su compra esta siendo procesada")
-     document.getElementById("carrito").innerHTML=""
-     document.getElementById("precio").innerHTML=""
-     document.getElementById("iva").innerHTML=""
-     document.getElementById("descuentoDiv").innerHTML=""
-     document.getElementById("total").innerHTML=""
-     carrito.splice(0,carrito.length)
+
+
+$("#comprar").click(()=>{
+    alert("Su compra esta siendo procesada")
+    localStorage.removeItem("carrito")
+    document.getElementById("productosCarrito").innerHTML=" "
+    document.getElementById("total").innerHTML=" "
+    document.getElementById("iva").innerHTML=" "
+    document.getElementById("cupon").innerHTML=" "
+    document.getElementById("descuento").innerHTML=" "
+    document.getElementById("carritoTotal").innerHTML=" "
 })
 
+})
 
 

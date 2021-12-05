@@ -1,10 +1,10 @@
-let talleVestido=document.getElementById("talle");
+ let talleVestido=document.getElementById("talle");
 let talleZapato=document.getElementById("talleZapato");
 let accesoriosSi=document.getElementById("accesoriosSi");
 
 let miFormulario=document.getElementById("formulario")
 let suma=0
-
+let suerte=[]
 function formularioSuerte(event){ 
     event.preventDefault();
 
@@ -14,11 +14,12 @@ function formularioSuerte(event){
         let accesoriosSuerteDiv=document.createElement("div");
         accesoriosSuerteDiv.innerHTML=
         `<h4> Accesorio: </h4>
-        <h5>Nombre: ${accesoriosSuertePop.nombre}</h5>
+        <h5 >Nombre: ${accesoriosSuertePop.nombre}</h5>
        <h6> Precio: $${accesoriosSuertePop.precio}</h5>
         <img src=${accesoriosSuertePop.imagen} height=200px>`
         suma+= accesoriosSuertePop.precio
         accesoriosSuerte.appendChild(accesoriosSuerteDiv)
+        suerte.push(accesoriosSuertePop)
     } else{
     }
 
@@ -35,6 +36,7 @@ if (talleVestido.value=="S"){
     <img src=${vestidoSuerteS.imagen} height=200px>`
     suma+= vestidoSuerteS.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
+    suerte.push(vestidoSuerteS)
 }else if (talleVestido.value=="M"){
     let vestidoSuerteM=vestidos.find(vSuerteM=> vSuerteM.talle =="M");
 
@@ -46,6 +48,7 @@ if (talleVestido.value=="S"){
     `
     suma+= vestidoSuerteM.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
+    suerte.push(vestidoSuerteM)
 }else if (talleVestido.value=="L"){
     let vestidoSuerteL=vestidos.find(vSuerteM=> vSuerteM.talle =="L");
 
@@ -57,6 +60,7 @@ if (talleVestido.value=="S"){
     `
     suma+= vestidoSuerteL.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
+    suerte.push(vestidoSuerteL)
 }else if (talleVestido.value=="XS"){
     let vestidoSuerteXS=vestidos.find(vSuerteM=> vSuerteM.talle =="XS");
 
@@ -68,6 +72,7 @@ if (talleVestido.value=="S"){
     `
     suma+= vestidoSuerteXS.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
+    suerte.push(vestidoSuerteXS)
 } else if(talleVestido.value==""){
     let vacio=document.createElement("p")
     vacio.innerHTML= ``
@@ -95,6 +100,7 @@ switch (talleZapato.value){
         <img src= ${zapato35.imagen} height=200px>`
         suma+= zapato35.precio
         zapatoSuerte.appendChild(zapatoDiv);
+        suerte.push(zapato35)
         break;
     case "38":
         let zapato38=zapatos.find(z38=>z38.talle =="38");
@@ -105,6 +111,7 @@ switch (talleZapato.value){
         <img src= ${zapato38.imagen} height=200px>`
         suma+= zapato38.precio
         zapatoSuerte.appendChild(zapatoDiv);
+        suerte.push(zapato38)
         break;   
     case "39":
         let zapato39=zapatos.find(z39=>z39.talle =="39");
@@ -115,6 +122,7 @@ switch (talleZapato.value){
         <img src= ${zapato39.imagen} height=200px>`
         suma+= zapato39.precio
         zapatoSuerte.appendChild(zapatoDiv);
+        suerte.push(zapato39)
         break;
     case "":
         let sinZapatoVacio=document.createElement("p");
@@ -127,7 +135,7 @@ switch (talleZapato.value){
         zapatoSuerte.appendChild(sinZapato);
       break;
     }  
-}
+ }
 zapatoLook()
 miFormulario.reset()
 }
@@ -139,7 +147,15 @@ let reservarLookBoton=document.createElement("div");
     `<button> Reservar Look </button>`
 reservarLook.appendChild(reservarLookBoton)
 reservarLookBoton.addEventListener("click",()=>{
-   alert(`Seguro que desea proceder? Su total es ${suma}`)
+   alert(`Productos añadidos al carrito`)
+    let carritoSuerte= Array.prototype.push.apply(carrito, suerte)
+   
+   guardarCarrito2(carritoSuerte)
+   
+   document.getElementById("vestidoSuerte").innerHTML=" "
+   document.getElementById("zapatoSuerte").innerHTML=" "
+   document.getElementById("accesoriosSuerte").innerHTML=" "
+   suma=0
 })
 
 let borrarLook= document.getElementById("borrarLook");
@@ -151,8 +167,6 @@ borrarLookBoton.addEventListener("click", ()=>{
         document.getElementById("vestidoSuerte").innerHTML=" "
         document.getElementById("zapatoSuerte").innerHTML=" "
         document.getElementById("accesoriosSuerte").innerHTML=" "
+        suma=0
 
-})
-
-
-
+}) 

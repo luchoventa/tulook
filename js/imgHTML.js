@@ -1,84 +1,71 @@
 
-const productosVestidos=document.getElementById("productosVestidos")
-for (const vestido of vestidos){
-    let contenedorVestidos=document.createElement("div");
-    contenedorVestidos.innerHTML=
-    `<img src=${vestido.imagen} height=200px>
-    <h5> Producto: ${vestido.nombre}</h5> 
-    <h5> Talle: ${vestido.talle}
-    <h6 > Precio: $ ${vestido.precio}</h6>
-    <button class=addToCart> Lo quiero </button>
-`
-productosVestidos.appendChild(contenedorVestidos)
-}
 
-const productosZapatos=document.getElementById("productosZapatos")
-for (const zapato of zapatos){
-    let contenedorZapatos=document.createElement("div");
-    contenedorZapatos.innerHTML=
-    `<img src=${zapato.imagen} height=200px>
-    <h5> Producto: ${zapato.nombre}</h5> 
-    <h5> Talle: ${zapato.talle}
-    <h6> Precio: $ ${zapato.precio}</h6>
-    <button class=addToCartZ> Lo quiero </button>`
-productosZapatos.appendChild(contenedorZapatos)
-}
+   
+   let infoCarrito=localStorage.getItem("carrito")
+   let carrito = [];
+   
+    if(infoCarrito)
+    carrito=JSON.parse(infoCarrito)
 
-const productosAccesorios=document.getElementById("productosAccesorios")
-for (const accesorio of accesorios){
-    let contenedorAccesorios=document.createElement("div");
-    contenedorAccesorios.innerHTML=
-    `<img src=${accesorio.imagen} height=200px>
-    <h5> Producto: ${accesorio.nombre}</h5> 
-    <h5> Talle: ${accesorio.talle}
-    <h6> Precio: $ ${accesorio.precio}</h6>
-    <button class=addToCartA> Lo quiero </button>`
-productosAccesorios.appendChild(contenedorAccesorios)
-}
 
-//btn vestidos//
-let btnAddToCartV=document.getElementsByClassName("addToCart");
 
-for (let i = 0; i < btnAddToCartV.length; i++) {
-        btnAddToCartV[i].addEventListener("click",() => {
-        agregarCarritoV(i)
-    });
-}
-function agregarCarritoV(vestidosID){
-    let itemCarritoV=vestidos.find((item=>item.id==vestidosID))
+    function carritoNumero(){
+        $("#qCarrito").html(carrito.length)
+    }
 
-    carrito.push(itemCarritoV)
-    mostrarCarrito();
-}
+    function guardarCarrito(compra){
+    carrito.push(compra)
+    let carritoString=JSON.stringify(carrito);
+    localStorage.setItem("carrito",carritoString)
 
-//btn zapatos//
-let btnAddToCartZ=document.getElementsByClassName("addToCartZ");
+    carritoNumero()}
 
-for (let i = 0; i < btnAddToCartZ.length; i++) {
-        btnAddToCartZ[i].addEventListener("click",() => {
-        agregarCarritoZ(4+i)
-    });
-}
-function agregarCarritoZ(zapatosID){
-    let itemCarritoZ=zapatos.find((itemz=>itemz.id==zapatosID))
+    function guardarCarrito2(){
+                let carritoString=JSON.stringify(carrito);
+        localStorage.setItem("carrito",carritoString)
+    
+        carritoNumero()}
 
-    carrito.push(itemCarritoZ)
-    mostrarCarrito()
-}
-
-//btn accesorios//
-
-let btnAddToCartA=document.getElementsByClassName("addToCartA");
-
-for (let i = 0; i < btnAddToCartA.length; i++) {
-        btnAddToCartA[i].addEventListener("click",() => {
-        agregarCarritoA(8+i)
-    });
-}
-function agregarCarritoA(accesoriosID){
-    let itemCarritoA=accesorios.find((itema=>itema.id==accesoriosID))
-
-    carrito.push(itemCarritoA)
-    mostrarCarrito()
-}
+    $(()=> {
+        carritoNumero()
+    for (const vestido of vestidos){ 
+        $("#productosVestidos").append(
+            `<div>
+            <img src=${vestido.imagen} height=200px>
+            <h5> Producto: ${vestido.nombre}</h5> 
+            <h5> Talle: ${vestido.talle}
+            <h6 > Precio: $ ${vestido.precio}</h6>
+            <button id="producto${vestido.id}" > Lo quiero </button>
+        </div>`
+        )
+       
+         $(`#producto${vestido.id}`).click(()=>guardarCarrito(vestido)) 
+  
+        
+    }
+    
+    for (const zapato of zapatos){
+        $("#productosZapatos").append(
+            `<div> <img src=${zapato.imagen} height=200px>
+            <h5> Producto: ${zapato.nombre}</h5> 
+            <h5> Talle: ${zapato.talle}
+            <h6> Precio: $ ${zapato.precio}</h6>
+            <button id="producto${zapato.id}" > Lo quiero </button></div>`
+        )
+        $(`#producto${zapato.id}`).click(()=>guardarCarrito(zapato))
+    }
+    
+    for (const accesorio of accesorios){
+        $("#productosAccesorios").append(
+            `<div>
+            <img src=${accesorio.imagen} height=200px>
+            <h5> Producto: ${accesorio.nombre}</h5> 
+            <h5> Talle: ${accesorio.talle}
+            <h6> Precio: $ ${accesorio.precio}</h6>
+            <button id="producto${accesorio.id}" > Lo quiero </button> </div>`
+        )
+        $(`#producto${accesorio.id}`).click(()=>guardarCarrito(accesorio))
+    }
+    
+})
 

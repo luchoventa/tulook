@@ -82,3 +82,8 @@ footer {
 h1 {
   font-size: 60px;
   text-align: center; }
+
+.carritoProductos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
