@@ -41,6 +41,9 @@ h2, h4 {
   height: 90%; }
 
 /* div destacados */
+h4 {
+  text-align: center; }
+
 #productosVestidos {
   display: flex;
   justify-content: space-around; }
@@ -83,7 +86,10 @@ h1 {
   font-size: 60px;
   text-align: center; }
 
-.carritoProductos {
+#carritoProductos {
   display: flex;
   flex-direction: row;
   justify-content: space-around; }
+
+#totales {
+  text-align: center; }
