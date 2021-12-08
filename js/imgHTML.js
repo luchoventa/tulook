@@ -15,7 +15,9 @@ let carrito = [];
  let carritoString=JSON.stringify(carrito);
  localStorage.setItem("carrito",carritoString)
 
- carritoNumero()}
+ carritoNumero()
+
+}
 
  function guardarCarrito2(){
              let carritoString=JSON.stringify(carrito);
@@ -65,3 +67,5 @@ let carrito = [];
  }
  
 })
+
+

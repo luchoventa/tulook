@@ -83,16 +83,16 @@
             }
       
     } 
-    
-    $("#comprar").click(()=>{
-        alert("Su compra esta siendo procesada")
-        localStorage.removeItem("carrito")
-        document.getElementById("productosCarrito").innerHTML=" "
-        document.getElementById("total").innerHTML=" "
-        document.getElementById("iva").innerHTML=" "
-        document.getElementById("cupon").innerHTML=" "
-        document.getElementById("descuento").innerHTML=" "
-        document.getElementById("carritoTotal").innerHTML=" "
+    $("#seguirComprando").css({ 
+        "background-color":"rgba(185, 8, 8, 0.945)",
+        "font-wight":"bold",
+        "color":"white",
     })
+
+$("#seguirComprando").animate({ 
+    left:`100px`,
+    height:`50px`,
+    width:`100px`
+},4000)
     
     }) 
