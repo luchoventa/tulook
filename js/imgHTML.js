@@ -1,32 +1,37 @@
 let infoCarrito=localStorage.getItem("carrito")
+let precioTotal=0
 let carrito = [];
 
  if(infoCarrito)
  carrito=JSON.parse(infoCarrito)
 
-
+ let carritoHTMLdrop="<li>";
 
  function carritoNumero(){
      $("#qCarrito").html(carrito.length)
+     $("#qCarritoBtn").html(carrito.length)
  }
-
+ 
+ 
  function guardarCarrito(compra){
  carrito.push(compra)
  let carritoString=JSON.stringify(carrito);
  localStorage.setItem("carrito",carritoString)
 
  carritoNumero()
-
-}
+ 
+ 
+ }
 
  function guardarCarrito2(){
              let carritoString=JSON.stringify(carrito);
      localStorage.setItem("carrito",carritoString)
- 
-     carritoNumero()}
-
+     carritoNumero()
+    }
+     
  $(()=> {
      carritoNumero()
+    
  for (const vestido of vestidos){ 
      $("#productosVestidos").append(
          `<div>
@@ -38,8 +43,16 @@ let carrito = [];
      </div>`
      )
     
-      $(`#producto${vestido.id}`).click(()=>guardarCarrito(vestido)) 
-
+      $(`#producto${vestido.id}`).click(()=>{
+        $("#dropdownCart").append(
+            `
+             <h6 > ${vestido.nombre}</h6> 
+             <p > $ ${vestido.precio}</p>
+             `)
+        guardarCarrito(vestido)
+        
+        }) 
+    
      
  }
  
@@ -51,7 +64,13 @@ let carrito = [];
          <h6> Precio: $ ${zapato.precio}</h6>
          <button id="producto${zapato.id}" > Lo quiero </button></div>`
      )
-     $(`#producto${zapato.id}`).click(()=>guardarCarrito(zapato))
+     $(`#producto${zapato.id}`).click(()=>{
+        $("#dropdownCart").append(
+           `
+            <h6 > ${zapato.nombre}</h6> 
+            <p > $ ${zapato.precio}</p>
+            `)
+         guardarCarrito(zapato)})
  }
  
  for (const accesorio of accesorios){
@@ -63,9 +82,25 @@ let carrito = [];
          <h6> Precio: $ ${accesorio.precio}</h6>
          <button id="producto${accesorio.id}" > Lo quiero </button> </div>`
      )
-     $(`#producto${accesorio.id}`).click(()=>guardarCarrito(accesorio))
+     $(`#producto${accesorio.id}`).click(()=>{
+        $("#dropdownCart").append(
+            `
+             <h6 > ${accesorio.nombre}</h6> 
+             <p > $ ${accesorio.precio}</p>
+             `)
+
+         guardarCarrito(accesorio)})
  }
- 
+$("#eliminar").click(()=>{
+    localStorage.removeItem("carrito")
+    document.getElementById("dropdownCart").innerHTML=""
+    document.getElementById("qCarritoBtn").innerHTML=""
+    document.getElementById("qCarrito").innerHTML=""
+
+    alert("esta eliminando el carrito")
+    location.reload()
 })
+})
+
 
 

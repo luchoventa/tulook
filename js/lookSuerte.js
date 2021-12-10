@@ -147,11 +147,20 @@ let reservarLookBoton=document.createElement("div");
     `<button> Reservar Look </button>`
 reservarLook.appendChild(reservarLookBoton)
 reservarLookBoton.addEventListener("click",()=>{
+    for (const id in suerte){ 
+        let producto=suerte[id]
+        $("#dropdownCart").append(
+        `
+        <h6 > ${producto.nombre}</h6> 
+        <p > $ ${producto.precio}</p>
+      `)
+    }
    alert(`Productos añadidos al carrito`)
     let carritoSuerte= Array.prototype.push.apply(carrito, suerte)
    
    guardarCarrito2(carritoSuerte)
-   
+
+
    document.getElementById("vestidoSuerte").innerHTML=" "
    document.getElementById("zapatoSuerte").innerHTML=" "
    document.getElementById("accesoriosSuerte").innerHTML=" "
