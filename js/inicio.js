@@ -4,7 +4,7 @@ let descuentoOriginal=""
 
     class Producto{
         constructor(nombre,talle, precio,imagen){
-            this.nombre = nombre.toLowerCase();
+            this.nombre = nombre.toUpperCase();
             this.talle= talle.toUpperCase();
             this.precio = parseFloat(precio);
             this.imagen=imagen

@@ -1,10 +1,17 @@
- let talleVestido=document.getElementById("talle");
+let talleVestido=document.getElementById("talle");
 let talleZapato=document.getElementById("talleZapato");
 let accesoriosSi=document.getElementById("accesoriosSi");
 
 let miFormulario=document.getElementById("formulario")
 let suma=0
 let suerte=[]
+
+function UperCase() {
+    talleVestido.value=talleVestido.value.toUpperCase()
+}
+    
+
+
 function formularioSuerte(event){ 
     event.preventDefault();
 
@@ -25,6 +32,7 @@ function formularioSuerte(event){
 
 const vestidoSuerte=document.getElementById("vestidoSuerte")
 function vestidoLook() { 
+    UperCase()
     let vestidoSuerteDiv=document.createElement("div")
 if (talleVestido.value=="S"){
     let vestidoSuerteS=vestidos.find(vSuerteS=> vSuerteS.talle =="S");
