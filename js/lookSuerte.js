@@ -163,7 +163,7 @@ reservarLookBoton.addEventListener("click",()=>{
         <p > $ ${producto.precio}</p>
       `)
     }
-   alert(`Productos añadidos al carrito`)
+   alert (`Productos añadidos al carrito`)
     let carritoSuerte= Array.prototype.push.apply(carrito, suerte)
    
    guardarCarrito2(carritoSuerte)
