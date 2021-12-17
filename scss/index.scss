@@ -94,8 +94,11 @@ h4{
     margin: 1%;
 }
 
-/*carrito boton*/
-
+/*filtros*/
+.filtros{
+    display: flex;
+    justify-content: space-around;
+}
 
 /* footer */
 footer{
