@@ -24,8 +24,8 @@ let carrito = [];
  }
 
  function guardarCarrito2(){
-             let carritoString=JSON.stringify(carrito);
-     localStorage.setItem("carrito",carritoString)
+    let carritoString=JSON.stringify(carrito);
+    localStorage.setItem("carrito",carritoString)
      carritoNumero()
     }
      
@@ -91,14 +91,34 @@ let carrito = [];
 
          guardarCarrito(accesorio)})
  }
-$("#eliminar").click(()=>{
-    localStorage.removeItem("carrito")
-    document.getElementById("dropdownCart").innerHTML=""
-    document.getElementById("qCarritoBtn").innerHTML=""
-    document.getElementById("qCarrito").innerHTML=""
 
-    alert("esta eliminando el carrito")
-    location.reload()
+
+
+$("#eliminar").click(()=>{
+
+    Swal.fire({
+        title: 'Eliminar carrito?',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrenlo!',
+        
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Eliminado!',
+            'Tu carrito esta vacio.',
+            'success'
+          )
+        }
+      })
+      localStorage.removeItem("carrito")
+      document.getElementById("dropdownCart").innerHTML=""
+      document.getElementById("qCarritoBtn").innerHTML=""
+      document.getElementById("qCarrito").innerHTML=""
+      
+    
 })
 })
 

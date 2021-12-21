@@ -163,7 +163,15 @@ reservarLookBoton.addEventListener("click",()=>{
         <p > $ ${producto.precio}</p>
       `)
     }
-   alert (`Productos añadidos al carrito`)
+    Swal.fire({
+        title: 'Productos agregados al carrito',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
     let carritoSuerte= Array.prototype.push.apply(carrito, suerte)
    
    guardarCarrito2(carritoSuerte)

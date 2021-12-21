@@ -13,6 +13,10 @@
     "node-sass": "^6.0.1",
     "nodemon": "^2.0.14"
   },
-  "dependencies": {},
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "mercadopago": "^1.5.9",
+    "sweetalert2": "^11.3.0"
+  },
   "description": ""
 }
