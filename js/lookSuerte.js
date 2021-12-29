@@ -21,8 +21,8 @@ function formularioSuerte(event){
         let accesoriosSuerteDiv=document.createElement("div");
         accesoriosSuerteDiv.innerHTML=
         `<h4> Accesorio: </h4>
-        <h5 >Nombre: ${accesoriosSuertePop.nombre}</h5>
-       <h6> Precio: $${accesoriosSuertePop.precio}</h5>
+        <h5> <b>Nombre:</b> ${accesoriosSuertePop.nombre}</h5>
+       <h6> <b> Precio: </b> $${accesoriosSuertePop.precio}</h5>
         <img src=${accesoriosSuertePop.imagen} height=200px>`
         suma+= accesoriosSuertePop.precio
         accesoriosSuerte.appendChild(accesoriosSuerteDiv)
@@ -39,8 +39,8 @@ if (talleVestido.value=="S"){
 
     vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
-    <h5> Producto: ${vestidoSuerteS.nombre}</h5> 
-    <h6> Precio: $ ${vestidoSuerteS.precio}</h6>
+    <h5> <b> Producto: </b> ${vestidoSuerteS.nombre}</h5> 
+    <h6><b> Precio:</b> $ ${vestidoSuerteS.precio}</h6>
     <img src=${vestidoSuerteS.imagen} height=200px>`
     suma+= vestidoSuerteS.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
@@ -50,8 +50,8 @@ if (talleVestido.value=="S"){
 
     vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
-    <h5> Producto: ${vestidoSuerteM.nombre}</h5> 
-    <h6> Precio: $ ${vestidoSuerteM.precio}</h6>
+    <h5><b> Producto:</b> ${vestidoSuerteM.nombre}</h5> 
+    <h6><b> Precio:</b> $ ${vestidoSuerteM.precio}</h6>
     <img src=${vestidoSuerteM.imagen} height=200px>
     `
     suma+= vestidoSuerteM.precio
@@ -62,8 +62,8 @@ if (talleVestido.value=="S"){
 
     vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
-    <h5> Producto: ${vestidoSuerteL.nombre}</h5> 
-    <h6> Precio: $ ${vestidoSuerteL.precio}</h6>
+    <h5><b> Producto:</b> ${vestidoSuerteL.nombre}</h5> 
+    <h6><b> Precio:</b> $ ${vestidoSuerteL.precio}</h6>
     <img src=${vestidoSuerteL.imagen} height=200px>
     `
     suma+= vestidoSuerteL.precio
@@ -74,8 +74,8 @@ if (talleVestido.value=="S"){
 
     vestidoSuerteDiv.innerHTML = 
     `<h4> Vestido: </h4>
-    <h5> Producto: ${vestidoSuerteXS.nombre}</h5> 
-    <h6> Precio: $ ${vestidoSuerteXS.precio}</h6>
+    <h5><b> Producto:</b> ${vestidoSuerteXS.nombre}</h5> 
+    <h6><b> Precio:</b> $ ${vestidoSuerteXS.precio}</h6>
     <img src=${vestidoSuerteXS.imagen} height=200px>
     `
     suma+= vestidoSuerteXS.precio
@@ -103,8 +103,8 @@ switch (talleZapato.value){
 
         zapatoDiv.innerHTML=
         `<h4> Zapatos: </h4>
-        <h5> Modelo: ${zapato35.nombre}</h5>
-        <h6> Precio: ${zapato35.precio} </h6>
+        <h5> <b>Modelo:</b> ${zapato35.nombre}</h5>
+        <h6><b> Precio:</b> ${zapato35.precio} </h6>
         <img src= ${zapato35.imagen} height=200px>`
         suma+= zapato35.precio
         zapatoSuerte.appendChild(zapatoDiv);
@@ -114,8 +114,8 @@ switch (talleZapato.value){
         let zapato38=zapatos.find(z38=>z38.talle =="38");
         zapatoDiv.innerHTML=
         `<h4> Zapatos: </h4>
-        <h5> Modelo: ${zapato38.nombre}</h5>
-        <h6> Precio: ${zapato38.precio} </h6>
+        <h5> <b>Modelo:</b> ${zapato38.nombre}</h5>
+        <h6><b> Precio:</b> ${zapato38.precio} </h6>
         <img src= ${zapato38.imagen} height=200px>`
         suma+= zapato38.precio
         zapatoSuerte.appendChild(zapatoDiv);
@@ -125,8 +125,8 @@ switch (talleZapato.value){
         let zapato39=zapatos.find(z39=>z39.talle =="39");
         zapatoDiv.innerHTML=
         `<h4> Zapatos: </h4>
-        <h5> Modelo: ${zapato39.nombre}</h5>
-        <h6> Precio: ${zapato39.precio} </h6>
+        <h5><b> Modelo:</b> ${zapato39.nombre}</h5>
+        <h6><b> Precio:</b> ${zapato39.precio} </h6>
         <img src= ${zapato39.imagen} height=200px>`
         suma+= zapato39.precio
         zapatoSuerte.appendChild(zapatoDiv);
@@ -152,8 +152,9 @@ miFormulario.addEventListener("submit", formularioSuerte)
 let reservarLook= document.getElementById("reservarLook");
 let reservarLookBoton=document.createElement("div");
     reservarLookBoton.innerHTML= 
-    `<button> Reservar Look </button>`
+    `<button class="btnLook"> Reservar Look </button>`
 reservarLook.appendChild(reservarLookBoton)
+
 reservarLookBoton.addEventListener("click",()=>{
     for (const id in suerte){ 
         let producto=suerte[id]
@@ -173,7 +174,8 @@ reservarLookBoton.addEventListener("click",()=>{
         }
       })
     let carritoSuerte= Array.prototype.push.apply(carrito, suerte)
-   
+   suerte=[];
+   console.log(suerte)
    guardarCarrito2(carritoSuerte)
 
 
@@ -186,7 +188,7 @@ reservarLookBoton.addEventListener("click",()=>{
 let borrarLook= document.getElementById("borrarLook");
 let borrarLookBoton=document.createElement("div");
     borrarLookBoton.innerHTML= 
-    `<button> Borrar Look </button>`
+    `<button class="btnLook"> Borrar Look </button>`
 borrarLook.appendChild(borrarLookBoton)
 borrarLookBoton.addEventListener("click", ()=>{
         document.getElementById("vestidoSuerte").innerHTML=" "

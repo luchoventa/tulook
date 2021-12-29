@@ -1,15 +1,15 @@
 $(()=>{
     $("#filtroVestidos").append(
-        `<button id=soloVestidos> Ver Vestidos</button>`
+        `<button id=soloVestidos  class="btnFiltros"> Ver Vestidos</button>`
     )
     $("#filtroZapatos").append(
-        `<button id=soloZapatos> Ver Zapatos</button>`
+        `<button id=soloZapatos class="btnFiltros"> Ver Zapatos</button>`
     )
     $("#filtroAccesorios").append(
-        `<button id=soloAccesorios> Ver Accesorios</button>`
+        `<button id=soloAccesorios class="btnFiltros"> Ver Accesorios</button>`
     )
     $("#verTodos").append(
-        `<button id=verTodos> Ver Todos</button>`
+        `<button id=verTodos class="btnFiltros"> Ver Todos</button>`
     )
 
         $("#soloVestidos").click(()=>{

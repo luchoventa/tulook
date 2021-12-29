@@ -6,7 +6,42 @@ h1{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 }
 #totales{
  text-align: center;
+ color: #df744a;
+ font-size: 20px;
+}
+//pago
+.pagoForm{
+    text-align: center;
+    color: #df744a;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 5%;
+   
+}
+.formPagoDiv{
+    margin-left: 65px;
+}
+
+#seguirComprando{
+    background-color:#bfd8d2 ;
+    color: #df744a;
+    font-weight: bold;
+    border:none;
+    border-radius: 5px; 
+    display: flex;
+    justify-content: center;
+    
+&:hover{
+        color: #bfd8d2;
+        background-color:#df744a;
+    }
+}
+.btnComprando{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
 }

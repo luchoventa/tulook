@@ -1,5 +1,4 @@
 body {
-  background-color: white;
   font-family: 'Zen Kurenaido', sans-serif; }
 
 a {
@@ -7,8 +6,36 @@ a {
 
 /* !--nav  */
 nav {
-  background-color: #f6f6f6;
-  color: rgba(185, 8, 8, 0.945); }
+  background-color: #fedcd2;
+  color: #373737; }
+
+#logo {
+  color: #373737;
+  font-size: 200%;
+  font-family: 'Zen Kurenaido', sans-serif; }
+
+#logoBold {
+  font-weight: bold; }
+
+#carritoNumero {
+  color: #df744a;
+  font-size: 120%;
+  font-weight: bold;
+  font-family: 'Zen Kurenaido', sans-serif; }
+
+#qCarritoBtn, #dropdownCart {
+  color: #373737;
+  font-size: 120%;
+  font-weight: bold;
+  font-family: 'Zen Kurenaido', sans-serif; }
+
+.navbar-light .navbar-nav .nav-link {
+  display: flex;
+  align-items: center; }
+
+.navBar {
+  display: flex;
+  justify-content: end; }
 
 .imagenLogo {
   height: 30%;
@@ -24,31 +51,29 @@ nav {
 
 /* div tenemos el look */
 .parrafo1 {
-  font-weight: bold; }
+  color: #df744a;
+  text-align: center;
+  margin-bottom: 3%;
+  height: 200px; }
 
 h2, h4 {
   font-size: 60px; }
 
-.btnSubmit {
-  background-color: rgba(185, 8, 8, 0.945);
-  color: #f6f6f6; }
-  .btnSubmit:hover {
-    color: #f8bc6e; }
+button {
+  background-color: #bfd8d2;
+  color: #df744a;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px; }
+  button:hover {
+    color: #bfd8d2;
+    background-color: #df744a; }
 
-/* div etiquetas */
-.etiquetas {
-  font-family: 'Oswald', sans-serif;
-  text-align: center;
-  font-size: 55px;
-  color: black; }
-  .etiquetas:hover {
-    color: rgba(185, 8, 8, 0.945); }
+.btnFiltros {
+  height: 170%;
+  width: 150%; }
 
-.imagenEtiquetas {
-  width: 75%;
-  height: 90%; }
-
-/* div destacados */
+/* productos */
 h4 {
   text-align: center; }
 
@@ -64,9 +89,6 @@ h4 {
   display: flex;
   justify-content: space-around; }
 
-.imagenDestacados {
-  height: 100%; }
-
 #carrito {
   display: flex;
   flex-direction: column;
@@ -78,6 +100,19 @@ h4 {
 #tuLook {
   display: flex;
   flex-direction: column; }
+
+.titulo2 {
+  color: #df744a;
+  text-align: center;
+  margin-bottom: 3%; }
+
+label {
+  color: #df744a;
+  text-align: center; }
+
+.btnLook {
+  height: 150%;
+  width: 120%; }
 
 .formAccesorios {
   display: flex;
@@ -92,8 +127,11 @@ h4 {
 
 /* footer */
 footer {
-  background-color: #f6f6f6;
+  background-color: #fedcd2;
   font-weight: bold; }
+
+.iconos {
+  color: #dcb239; }
 
 h1 {
   font-size: 60px;
@@ -102,7 +140,37 @@ h1 {
 #carritoProductos {
   display: flex;
   flex-direction: row;
-  justify-content: space-around; }
+  justify-content: space-around;
+  align-items: center; }
 
 #totales {
-  text-align: center; }
+  text-align: center;
+  color: #df744a;
+  font-size: 20px; }
+
+.pagoForm {
+  text-align: center;
+  color: #df744a;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 5%; }
+
+.formPagoDiv {
+  margin-left: 65px; }
+
+#seguirComprando {
+  background-color: #bfd8d2;
+  color: #df744a;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center; }
+  #seguirComprando:hover {
+    color: #bfd8d2;
+    background-color: #df744a; }
+
+.btnComprando {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center; }

@@ -40,5 +40,3 @@ taza.addEventListener('click', () =>{
     calculate();
 } );
 
-
-calculate();

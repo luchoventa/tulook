@@ -4,20 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="../css/estilos.css">
     <title>Document</title>
 </head>
 <body>
-    <h4>Carrito</h4>
-    <div>
-        <h1>Productos</h1>
-    </div>
+    <!--nav-->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" id="logo" href="./index.html"> <span id="logoBold">Tu</span>Look</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse navBar" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="../images/shopping_cart_icon_172223.png" id="btnCart" alt="">
+                  (<b id=qCarritoBtn></b>)
+                  <p id="precioCarritoBtn"></p>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdownCart">
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../pages/carrito.html"  id="carritoNumero">Ver carrito</a>
+              </li>
+      
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"  ><img id="eliminar" src="../images/eliminar.png" alt=""></a>
+              </li>
+              </ul>
+            </div>
+        </div>
+      </nav>
+    <h4 class="titulo2 mt-5 mb-5">Carrito</h4>
     <div class="checkout ">
-    <div id="productosCarrito" class="col-lg-8"></div>
-    <div id="totales" class="col-lg-4">
+    <div id="productosCarrito" class="col-lg-12"></div>
+    <div id="totales">
     <div id="total"></div>
     <div id="iva"></div>
     <div id="cupon"></div>
@@ -28,20 +60,49 @@
 </div>
 <!-- Step #2 -->
 <form id="form-checkout" >
-  <input type="text" name="cardNumber" id="form-checkout__cardNumber" />
-  <input type="text" name="cardExpirationMonth" id="form-checkout__cardExpirationMonth" />
-  <input type="text" name="cardExpirationYear" id="form-checkout__cardExpirationYear" />
+    <div>
+        <p class="pagoForm"> Pago</p>
+    </div>
+    <div class="d-flex">
+    <div class="col-lg-6 formPagoDiv">
+<div>
+` <label for="">Numero de tarjeta</label>
+  <input type="number" name="cardNumber" id="form-checkout__cardNumber" />
+</div>
+<div>
+  <label for="">Mes de vencimiento</label>
+  <input type="number" name="cardExpirationMonth" id="form-checkout__cardExpirationMonth" />
+  <label for="">Año de vencimiento</label>
+  <input type="number" name="cardExpirationYear" id="form-checkout__cardExpirationYear" />
+</div>
+<div>
+  <label for="">Titular</label>
   <input type="text" name="cardholderName" id="form-checkout__cardholderName"/>
+</div> 
+<div>
+  <label for="">Email</label>
   <input type="email" name="cardholderEmail" id="form-checkout__cardholderEmail"/>
-  <input type="text" name="securityCode" id="form-checkout__securityCode" />
+</div>
+<div>
+ <label for="">Codigo de seguridad</label>
+  <input type="number" name="securityCode" id="form-checkout__securityCode" />
   <select name="issuer" id="form-checkout__issuer"></select>
+</div>
+<div>
   <select name="identificationType" id="form-checkout__identificationType"></select>
   <input type="text" name="identificationNumber" id="form-checkout__identificationNumber"/>
+</div>
+<div>
   <select name="installments" id="form-checkout__installments"></select>
+</div>
+<div>
   <button type="submit" id="form-checkout__submit" class="pago">Pagar</button>
+</div>
   <progress value="0" class="progress-bar" style="display:none">Cargando...</progress>
+</div>
 </form>
 <div>
+    <div class="col-lg-12">
   <h3>Necesitas saber el tipo de cambio?</h3>
   <button id="tcBtn">Ver tipo de cambio</button>
   <div id="tc" style="display:none">
@@ -74,7 +135,7 @@
 
       <div class="taza-cambio-container">
           <button class="btn" id="taza">
-              cambio
+              Cambio
           </button>
 
           <div class="cambio" id="cambio"></div>
@@ -103,19 +164,35 @@
           id="cantidad-dos" 
           placeholder="0"  
           >
-
+        </div>
       </div>
   </div>
+    </div>
+</div>
   </div>
 
-<div>
-  <a href="../index.html"> <buttton id="seguirComprando">Seguir Comprando</buttton></a>
+<div class="btnComprando" > 
+  <a  href="../index.html"> <buttton id="seguirComprando">Seguir Comprando</buttton></a>
 </div>
-
+<footer class="row mt-5 >">
+    <div class="col-lg-4 text-center mt-3">
+      <p>Encontranos en facebook e instagram</p>
+      <a href="" class=" iconos"><i class="bi iconos iconos bi-facebook"></i></a>
+      <a href="" class=" iconos"><i class="bi iconos bi-instagram"></i></a>
+    </div>
+    <div class="col-lg-4 text-center mt-3">
+      <p>Queres vender tus prendas? contactanos!</p>
+      <a href=""><i class="bi iconos bi-whatsapp"></i></a>
+    </div>
+      <div class="col-lg-4 text-center mt-3">
+          <p>Todos los derechos reservados</p>
+          <p class="iconos">Lucia Abramzon</p>
+      </div>
+  </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/inicio.js"></script>
     <script src="../js/carrito.js"></script>
-    <script src="../js/imgHTML.js"></script>
+    <script src="../js/HTML.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
     <script src="../js/mercadoPago.js"></script>
@@ -126,3 +203,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
