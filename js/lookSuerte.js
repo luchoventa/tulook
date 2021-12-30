@@ -1,4 +1,8 @@
-let talleVestido=document.getElementById("talle");
+let talleVestidoXS=document.getElementById("talleXS");
+let talleVestidoS=document.getElementById("talleS");
+let talleVestidoM=document.getElementById("talleM");
+let talleVestidoL=document.getElementById("talleL");
+let talleVestidoXL=document.getElementById("talleXL");
 let talleZapato=document.getElementById("talleZapato");
 let accesoriosSi=document.getElementById("accesoriosSi");
 
@@ -6,10 +10,7 @@ let miFormulario=document.getElementById("formulario")
 let suma=0
 let suerte=[]
 
-function UperCase() {
-    talleVestido.value=talleVestido.value.toUpperCase()
-}
-    
+
 
 
 function formularioSuerte(event){ 
@@ -32,9 +33,9 @@ function formularioSuerte(event){
 
 const vestidoSuerte=document.getElementById("vestidoSuerte")
 function vestidoLook() { 
-    UperCase()
+   
     let vestidoSuerteDiv=document.createElement("div")
-if (talleVestido.value=="S"){
+if (talleVestidoS.checked){
     let vestidoSuerteS=vestidos.find(vSuerteS=> vSuerteS.talle =="S");
 
     vestidoSuerteDiv.innerHTML = 
@@ -45,7 +46,7 @@ if (talleVestido.value=="S"){
     suma+= vestidoSuerteS.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
     suerte.push(vestidoSuerteS)
-}else if (talleVestido.value=="M"){
+}else if (talleVestidoM.checked){
     let vestidoSuerteM=vestidos.find(vSuerteM=> vSuerteM.talle =="M");
 
     vestidoSuerteDiv.innerHTML = 
@@ -57,7 +58,7 @@ if (talleVestido.value=="S"){
     suma+= vestidoSuerteM.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
     suerte.push(vestidoSuerteM)
-}else if (talleVestido.value=="L"){
+}else if (talleVestidoL.checked){
     let vestidoSuerteL=vestidos.find(vSuerteM=> vSuerteM.talle =="L");
 
     vestidoSuerteDiv.innerHTML = 
@@ -69,7 +70,7 @@ if (talleVestido.value=="S"){
     suma+= vestidoSuerteL.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
     suerte.push(vestidoSuerteL)
-}else if (talleVestido.value=="XS"){
+}else if (talleVestidoXS.checked){
     let vestidoSuerteXS=vestidos.find(vSuerteM=> vSuerteM.talle =="XS");
 
     vestidoSuerteDiv.innerHTML = 
@@ -81,14 +82,14 @@ if (talleVestido.value=="S"){
     suma+= vestidoSuerteXS.precio
     vestidoSuerte.appendChild(vestidoSuerteDiv)
     suerte.push(vestidoSuerteXS)
-} else if(talleVestido.value==""){
+} else if(talleVestidoXL.checked){
     let vacio=document.createElement("p")
-    vacio.innerHTML= ``
+    vacio.innerHTML= `No tenemos su talle talle`
     vestidoSuerte.appendChild(vacio)
 }
  else{
     let sinTalle=document.createElement("p")
-    sinTalle.innerHTML= `No tenemos su talle talle`
+    sinTalle.innerHTML= ``
     vestidoSuerte.appendChild(sinTalle)
 }
 }
