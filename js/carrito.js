@@ -82,10 +82,7 @@ $(() => {
           $(`.carritoProductos_${idNumber}`).remove();
         let carrito2 = JSON.stringify(carrito);
            localStorage.setItem("carrito", carrito2);  
-           console.log(precioTotal)
-           mostrarCarrito()
-           precio()
-           console.log(precioTotal)
+            
         };
 
       }
